@@ -1,0 +1,21 @@
+x<-c(39,65,62,90,82,75,20,98,36,78)
+y<-c(47,53,58,86,62,68,65,91,51,84)
+model<-lm(y~x)
+model
+model$coefficients[1]
+model$coefficients[2]
+yhat<-model$fitted.values
+yhat
+errors<-model$residuals
+errors
+thedata<-cbind(x,y,yhat,errors)
+thedata<-as.data.frame(thedata)
+thedata
+sse<-0
+for(i in 1:length(y)){
+  sse<-sse+y[i]-yhat[i]^2
+}
+print(sse)
+mse<-sse/length(y)
+rmse<-sqrt(mse)
+print(mse)
